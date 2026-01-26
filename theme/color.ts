@@ -1,0 +1,58 @@
+export interface IColor {
+    primary: string;
+    shadow: string;
+    text: string;
+    textNeutral: string;
+    bgCard: string;
+    bgImage: string;
+    bottomTab: string;
+    borderColor: string;
+    disable: string;
+    bg: string;
+}
+
+const colors: IColor = {
+    primary: "#2E7D32",
+
+    bg: "#F6F6F6",
+
+    shadow: "rgba(0,0,0,0.15)",
+    text: "#2B2B2B",
+
+    textNeutral: "#8f8f8f",
+
+    bgCard: "#FFFFFF",
+    bgImage: "#E9F8EB",
+
+    bottomTab: "#FFFFFF",
+
+    borderColor: "#D8D8D8",
+    disable: "#CFCFCF"
+};
+
+
+const darkColors: IColor = {
+    primary: "#00c951",
+
+    bg: "#101010",
+
+    shadow: "rgba(0,0,0,0.6)",
+    text: "#EAEAEA",
+    textNeutral: "#EAEAEA",
+
+    bgCard: "#1A1A1A",
+    bgImage: "#5e5e5eff",
+
+    bottomTab: "#151515",
+
+    borderColor: "#aaaaaaff",
+    disable: "#3A3A3A"
+};
+
+
+
+export {
+    colors,
+    darkColors
+};
+

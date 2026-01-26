@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "866022899889",
+    "project_id": "bitexco-power",
+    "storage_bucket": "bitexco-power.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866022899889:android:ec1fcf5a18d3d7be1b2290",
+        "android_client_info": {
+          "package_name": "com.bitexco.powe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJWPVoGxs1W-YzYyvI3d9gb7r44V4dDe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866022899889:android:77033ffa971aa6501b2290",
+        "android_client_info": {
+          "package_name": "com.bitexco.power"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJWPVoGxs1W-YzYyvI3d9gb7r44V4dDe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866022899889:android:59e08edc3aec36491b2290",
+        "android_client_info": {
+          "package_name": "com.itel.btcPower"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJWPVoGxs1W-YzYyvI3d9gb7r44V4dDe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
