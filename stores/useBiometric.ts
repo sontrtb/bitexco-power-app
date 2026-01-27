@@ -1,11 +1,10 @@
 import { IBioRegister } from '@/api/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-
+import { mmkvStorage } from './storage';
 export interface IBiometric {
   enabel: boolean;
-  data: IBioRegister
+  data: IBioRegister;
 }
 
 export interface BiometricState {
@@ -17,11 +16,12 @@ export const useBiometric = create<BiometricState>()(
   persist(
     (set) => ({
       enabelBiometric: undefined,
-      setEnabelBiometric: (enabelBiometric: IBiometric | undefined) => set({ enabelBiometric }),
+      setEnabelBiometric: (enabelBiometric) =>
+        set({ enabelBiometric }),
     }),
     {
       name: 'biometric-store',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => mmkvStorage),
     }
   )
 );

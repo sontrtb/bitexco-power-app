@@ -5,9 +5,6 @@ const validationSchema = () => {
         username: yup
             .string()
             .required("Tên đăng nhập không được để trống"),
-        password: yup
-            .string()
-            .required("Mật khẩu không được để trống"),
     });
 }
 

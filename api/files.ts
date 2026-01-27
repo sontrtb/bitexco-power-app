@@ -1,16 +1,12 @@
-import { useApartment } from "@/stores/useApartments";
 import { useAuth } from "@/stores/useAuth";
 
 const uploadFile = async (file: File): Promise<string> => {
-  const apartmentSelect = useApartment.getState().apartmentSelect;
 
   const user = useAuth.getState().user
   const initToken = user?.accessToken
 
   const headers = {
     'Authorization': `Bearer ${initToken}`,
-    "X-Domain-Id": `${apartmentSelect?.domainId}`,
-    "X-Apartment-Id": `${apartmentSelect?.apartmentId}`,
   };
 
   const formData = new FormData();

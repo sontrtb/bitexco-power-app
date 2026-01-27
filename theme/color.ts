@@ -12,12 +12,12 @@ export interface IColor {
 }
 
 const colors: IColor = {
-    primary: "#2E7D32",
+    primary: "#065B61",
 
     bg: "#F6F6F6",
 
     shadow: "rgba(0,0,0,0.15)",
-    text: "#2B2B2B",
+    text: "#181818",
 
     textNeutral: "#8f8f8f",
 

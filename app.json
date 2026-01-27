@@ -89,21 +89,6 @@
         {
           "faceIDPermission": "Cho phép ứng dụng sử dụng sinh trắc học (Face ID/Touch ID) để đăng nhập nhanh và an toàn hơn."
         }
-      ],
-
-      [
-        "expo-secure-store",
-        {
-          "configureAndroidBackup": true,
-          "faceIDPermission": "Cho phép ứng dụng sử dụng dữ liệu sinh trắc học để hỗ trợ đăng nhập nhanh."
-        }
-      ],
-
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Cho phép ứng dụng truy cập vị trí của bạn để hiển thị thông tin thời tiết và dịch vụ phù hợp tại khu vực sinh sống."
-        }
       ]
     ],
 

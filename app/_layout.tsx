@@ -1,6 +1,5 @@
 
 import ModalUpdate from '@/components/commons/ModalUpdate';
-import IdleWrapper from '@/providers/IdleWrapper';
 import {
   QueryClient,
   QueryClientProvider
@@ -44,7 +43,6 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView>
-        <IdleWrapper>
           <KeyboardProvider>
             <Routers />
             <Toast
@@ -53,7 +51,6 @@ export default function RootLayout() {
             />
             <ModalUpdate />
           </KeyboardProvider>
-        </IdleWrapper>
       </GestureHandlerRootView>
     </QueryClientProvider>
   )

@@ -97,6 +97,7 @@ function TextUi({
           color: color.text,
           fontFamily: fontMap[finalWeight],
           fontWeight: undefined,
+          lineHeight: (flatStyle?.fontSize ?? 14) * 1.5
         },
         style,
       ]}

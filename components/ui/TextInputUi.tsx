@@ -84,8 +84,9 @@ const styles = StyleSheet.create({
         fontWeight: "500"
     },
     textInput: {
-        borderBottomWidth: 1,
+        borderWidth: 1,
         padding: 12,
+        borderRadius: 8
     },
     eyeIcon: {
         position: "absolute",
@@ -103,6 +104,6 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: "500",
-        marginBottom: 4
+        marginBottom: 8
     }
 })

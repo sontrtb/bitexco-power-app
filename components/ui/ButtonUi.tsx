@@ -27,19 +27,22 @@ function ButtonUi(props: ButtonUiProps) {
     const colorBtn = useMemo(() => {
         let bgColor = color.primary
         let textColor = "#fff"
+        let borderColor = undefined
 
         switch (type) {
             case "primary":
                 bgColor = color.primary
                 textColor = "#fff"
+                borderColor = color.primary
                 break
             case "outline":
-                bgColor = color.bgImage
+                bgColor = color.bg
                 textColor = color.primary
+                borderColor = color.primary
                 break
         }
 
-        return { bgColor, textColor }
+        return { bgColor, textColor, borderColor }
     }, [color, type])
 
     return (
@@ -50,6 +53,7 @@ function ButtonUi(props: ButtonUiProps) {
                 styles.root,
                 {
                     backgroundColor: (isLoading || disable) ? color.disable : colorBtn.bgColor,
+                    borderColor: colorBtn.borderColor
                 },
                 style
             ]}
@@ -63,10 +67,11 @@ function ButtonUi(props: ButtonUiProps) {
 const styles = StyleSheet.create({
     root: {
         paddingHorizontal: 12,
-        height: 44,
+        height: 42,
         borderRadius: 22,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        borderWidth: 1
     }
 })
 

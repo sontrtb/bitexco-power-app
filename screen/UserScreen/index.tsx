@@ -19,7 +19,6 @@ import * as LocalAuthentication from 'expo-local-authentication';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import AddressCard from '../HomeScreen/AddressCard';
 import RowSelect from './components/RowSelect';
 import UserCard from './components/UserCard';
 
@@ -163,7 +162,6 @@ export default function UserScreen() {
 
         <View style={styles.content}>
           <UserCard />
-          <AddressCard />
 
           <CardUi>
             {

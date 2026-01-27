@@ -9,18 +9,18 @@ import TouchableOpacityUi from "@/components/ui/TouchableOpacityUi";
 import useTheme from "@/hooks/useColor";
 import useLoginHandle from "@/hooks/useLoginHandle";
 import { toastError } from "@/lib/toast";
-import { useBiometric } from "@/stores/useBiometric";
 import { PADDING_PAGE } from "@/theme/layout";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
     useMutation,
 } from '@tanstack/react-query';
+import { Image } from 'expo-image';
 import { useRouter } from "expo-router";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { StyleSheet, View } from "react-native";
-import Biometrics from "./components/Biometrics";
+import { Dimensions, StyleSheet, View } from "react-native";
 import { validationSchema } from "./validation";
 
+const windowWidth = Dimensions.get('window').width;
 
 function LoginScreen() {
     const color = useTheme()
@@ -29,16 +29,14 @@ function LoginScreen() {
 
     const onLoginSuccess = useLoginHandle()
 
-    const { enabelBiometric, setEnabelBiometric } = useBiometric()
 
     const {
         handleSubmit,
         control,
         formState: { errors },
-        reset,
     } = useForm<ILoginData>({
         defaultValues: {
-            username: enabelBiometric?.data.username,
+            username: '',
             password: '',
         },
         resolver: yupResolver(validationSchema()),
@@ -56,93 +54,77 @@ function LoginScreen() {
     })
 
     const onLogin: SubmitHandler<ILoginData> = (v: ILoginData) => {
-        loginMuatation.mutate(v)
+        // loginMuatation.mutate(v)
+        const fakeData = {
+            accessToken: "accessToken",
+            username: "username001",
+            fullname: "Phạm Văn A",
+        }
+        onLoginSuccess(fakeData)
     }
 
-    const resetLogin = () => {
-        reset()
-        setEnabelBiometric(undefined)
+    const onForgotPassword = () => {
+        router.push("/auth/forgot-password")
     }
 
     return (
         <AuthLayout>
             <View style={styles.root}>
-                <View>
-                    <TextUi allowFontScaling={false} style={[styles.title, { color: color.primary }]}>{enabelBiometric?.enabel ? "Xin chào" : "Đăng nhập"}</TextUi>
-                    {enabelBiometric?.data.fullname &&
-                        <TextUi allowFontScaling={false} style={[styles.subTitle, { color: color.primary }]}>{enabelBiometric?.data.fullname}</TextUi>
-                    }
-                    <View style={[styles.diriver, { backgroundColor: color.primary }]} />
+                <Image style={styles.logo} source={require("@/assets/images/icon.png")} />
 
-                    {
-                        enabelBiometric?.data.username &&
-                        <TouchableOpacityUi onPress={resetLogin}>
-                            <TextUi style={{ textDecorationLine: 'underline' }}>Hoặc đăng nhập bằng tài khoản khác</TextUi>
-                        </TouchableOpacityUi>
-                    }
+                <TextUi allowFontScaling={false} style={[styles.title, { color: color.primary }]}>PHẦN MỀM QUẢN LÝ</TextUi>
+                <TextUi>Nghiệp vụ văn phòng</TextUi>
 
-
-                    <View style={styles.card}>
-                        {
-                            !enabelBiometric?.data.username &&
-                            <Controller
-                                name="username"
-                                control={control}
-                                render={({ field }) => {
-                                    return <TextInputUi
-                                        errorText={errors.username?.message}
-                                        label="Số điện thoại"
-                                        placeholder="Nhập số điện thoại"
-                                        value={field.value}
-                                        onChangeText={field.onChange}
-                                    />
-                                }}
+                <View style={styles.card}>
+                    <Controller
+                        name="username"
+                        control={control}
+                        render={({ field }) => {
+                            return <TextInputUi
+                                errorText={errors.username?.message}
+                                label="Tài khoản"
+                                placeholder="Nhập tài khoản"
+                                value={field.value}
+                                onChangeText={field.onChange}
                             />
-                        }
+                        }}
+                    />
 
-                        <Controller
-                            name="password"
-                            control={control}
-                            render={({ field }) => {
-                                return <TextInputUi
-                                    isPassword
-                                    label="Mật khẩu"
-                                    placeholder="Nhập mật khẩu"
-                                    value={field.value}
-                                    onChangeText={field.onChange}
-                                    errorText={errors.password?.message}
-                                />
-                            }}
-                        />
+                    <Controller
+                        name="password"
+                        control={control}
+                        render={({ field }) => {
+                            return <TextInputUi
+                                isPassword
+                                label="Mật khẩu"
+                                placeholder="Nhập mật khẩu"
+                                value={field.value}
+                                onChangeText={field.onChange}
+                                errorText={errors.password?.message}
+                            />
+                        }}
+                    />
 
-                        {/* <TouchableOpacityUi style={styles.forgotPassword} onPress={toastCommingSoon}>
-                            <TextUi style={{ color: color.primary, fontWeight: "600" }}>Quên mật khẩu</TextUi>
-                        </TouchableOpacityUi> */}
-
-                    </View>
                 </View>
 
-                <View>
-                    <Row>
-                        <ButtonUi
-                            text="Đăng nhập"
-                            style={styles.buttonLogin}
-                            onPress={handleSubmit(onLogin)}
-                            isLoading={loginMuatation.isPending}
-                        />
-                        <Biometrics />
-                    </Row>
-                   
-                    <View style={styles.footer}>
-                        <TextUi>Bạn chưa có tài khoản?</TextUi>
-                        <TouchableOpacityUi onPress={() => { router.push("/auth/register") }}>
-                            <TextUi style={{ color: color.primary, fontWeight: "600" }}>Đăng ký</TextUi>
-                        </TouchableOpacityUi>
-                    </View>
-
-                    <TemsLink />
+                <View style={styles.textAction}>
+                    <TextUi style={{ fontWeight: "600" }}>Ghi nhớ mất khẩu</TextUi>
+                    <TouchableOpacityUi onPress={onForgotPassword}>
+                        <TextUi style={{ color: color.primary }}>Quên mật khẩu</TextUi>
+                    </TouchableOpacityUi>
                 </View>
 
+                <Row>
+                    <ButtonUi
+                        text="Đăng nhập"
+                        style={styles.buttonLogin}
+                        onPress={handleSubmit(onLogin)}
+                        isLoading={loginMuatation.isPending}
+                    />
+                    {/* <Biometrics /> */}
+                </Row>
+                <TextUi style={{ marginTop: 8 }}>©2025 Công ty Cổ phần Năng lượng Bitexco</TextUi>
+                <TemsLink />
             </View>
         </AuthLayout>
     )
@@ -153,11 +135,20 @@ export default LoginScreen
 const styles = StyleSheet.create({
     root: {
         flex: 1,
-        justifyContent: "space-between",
+        justifyContent: "center",
         paddingHorizontal: PADDING_PAGE,
+        alignItems: "center",
+        zIndex: 99
+    },
+    textAction: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 16,
+        marginBottom: 64,
+        width: windowWidth - PADDING_PAGE * 2
     },
     title: {
-        fontSize: 32,
+        fontSize: 24,
         fontWeight: "600"
     },
     subTitle: {
@@ -165,26 +156,19 @@ const styles = StyleSheet.create({
         fontWeight: "600"
     },
     card: {
-        gap: 24,
-        marginTop: 28,
+        gap: 20,
+        marginTop: 40,
         width: "100%"
+    },
+    logo: {
+        height: 90,
+        width: 90,
+        marginBottom: 8
     },
     buttonLogin: {
         flex: 1,
     },
     forgotPassword: {
         alignItems: "flex-end",
-    },
-    diriver: {
-        width: 80,
-        height: 2,
-        marginBottom: 8,
-        marginTop: 8
-    },
-    footer: {
-        flexDirection: "row",
-        marginTop: 20,
-        justifyContent: "center",
-        gap: 6
     },
 })

@@ -6,7 +6,7 @@ import { useCountNoti } from '@/stores/useCountNoti';
 import Feather from '@expo/vector-icons/Feather';
 import messaging from '@react-native-firebase/messaging';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Badge, Icon, Label, NativeTabs, VectorIcon } from 'expo-router/unstable-native-tabs';
+import { Icon, Label, NativeTabs, VectorIcon } from 'expo-router/unstable-native-tabs';
 import { useEffect } from 'react';
 import { AppState, Platform } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
@@ -15,7 +15,7 @@ export default function TabLayout() {
   const color = useColor()
   const i18n = useI18n()
 
-  const { count, setCount } = useCountNoti()
+  const { setCount } = useCountNoti()
 
   const getCountNotificationsQuery = useQuery({
     queryFn: getCountNotifications,
@@ -81,22 +81,6 @@ export default function TabLayout() {
             <VectorIcon
               family={Feather}
               name="home"
-            />
-          }
-        />
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="notifications">
-        <Label>{i18n.t("bottomTab.noti")}</Label>
-        {
-          count && count > 0 &&
-          <Badge>{count.toString()}</Badge>
-        }
-        <Icon
-          src={
-            <VectorIcon
-              family={Feather}
-              name="bell"
             />
           }
         />

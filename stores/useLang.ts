@@ -1,21 +1,23 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import { mmkvStorage } from './storage';
+
+export type Lang = 'vn' | 'en' | 'lo';
 
 export interface LangState {
-  lang: "vn" | "en" | "lo";
-  setLang: (lang: "vn" | "en" | "lo") => void;
+  lang: Lang;
+  setLang: (lang: Lang) => void;
 }
 
 export const useLang = create<LangState>()(
   persist(
     (set) => ({
-      lang: "vn",
+      lang: 'vn',
       setLang: (lang) => set({ lang }),
     }),
     {
       name: 'lang-store',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => mmkvStorage),
     }
   )
 );

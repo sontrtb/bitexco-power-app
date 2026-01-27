@@ -1,12 +1,8 @@
+import TextUi from '@/components/ui/TextUi';
 import useColor from '@/hooks/useColor';
 import { PADDING_PAGE } from '@/theme/layout';
 import Constants from 'expo-constants';
-import { Platform, ScrollView, StyleSheet, View } from 'react-native';
-import AddressCard from './AddressCard';
-import Banner from './Banner';
-import News from './News';
-import UtilitiesCard from './UtilitiesCard';
-import WeatherBox from './WeatherBox';
+import { Platform, ScrollView, StyleSheet } from 'react-native';
 
 const statusBarHeight = Constants.statusBarHeight;
 
@@ -21,13 +17,7 @@ export default function HomeScreen() {
       style={[styles.root, { backgroundColor: color.bg }]}
       contentInset={{ top: Platform.OS === "android" ? 0 : -(statusBarHeight + 10) }}
     >
-      <WeatherBox />
-      <UtilitiesCard />
-      <View style={styles.addressWrap}>
-        <AddressCard />
-      </View>
-      <Banner />
-      <News />
+        <TextUi>HomeScreen</TextUi>
     </ScrollView >
   );
 }
