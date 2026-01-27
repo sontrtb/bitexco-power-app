@@ -1,19 +1,16 @@
 import { fcmRegister } from '@/api/fcm';
 import { getCountNotifications } from '@/api/notifications';
 import useColor from '@/hooks/useColor';
-import useI18n from '@/lang/i18n';
 import { useCountNoti } from '@/stores/useCountNoti';
-import Feather from '@expo/vector-icons/Feather';
 import messaging from '@react-native-firebase/messaging';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Icon, Label, NativeTabs, VectorIcon } from 'expo-router/unstable-native-tabs';
+import { Icon, Label, NativeTabs } from 'expo-router/unstable-native-tabs';
 import { useEffect } from 'react';
 import { AppState, Platform } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
 export default function TabLayout() {
   const color = useColor()
-  const i18n = useI18n()
 
   const { setCount } = useCountNoti()
 
@@ -26,8 +23,8 @@ export default function TabLayout() {
   useEffect(() => {
     setCount(countNoti ?? 0)
   }, [countNoti, setCount])
-  
-   useEffect(() => {
+
+  useEffect(() => {
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (
         nextAppState === 'active'
@@ -74,30 +71,49 @@ export default function TabLayout() {
       indicatorColor={color.bgImage}
       disableTransparentOnScrollEdge={true}
     >
-      <NativeTabs.Trigger name="index" >
-        <Label>{i18n.t("bottomTab.home")}</Label>
+      <NativeTabs.Trigger
+        name="index"
+      >
         <Icon
-          src={
-            <VectorIcon
-              family={Feather}
-              name="home"
-            />
-          }
+          src={require('@/assets/icons/ic_home.png')}
         />
+        <Label>Bàn làm việc</Label>
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger
         name="user"
       >
         <Icon
-          src={
-            <VectorIcon
-              family={Feather}
-              name="user"
-            />
-          }
+          src={require('@/assets/icons/ic_document.png')}
         />
-        <Label>{i18n.t("bottomTab.user")}</Label>
+        <Label>Tờ trình</Label>
+      </NativeTabs.Trigger>
+
+       <NativeTabs.Trigger
+        name="user1"
+      >
+        <Icon
+          src={require('@/assets/icons/ic_document_line.png')}
+        />
+        <Label>Bàn làm việc</Label>
+      </NativeTabs.Trigger>
+
+       <NativeTabs.Trigger
+        name="user2"
+      >
+        <Icon
+          src={require('@/assets/icons/ic_job.png')}
+        />
+        <Label>Bàn làm việc</Label>
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger
+        name="user3"
+      >
+        <Icon
+          src={require('@/assets/icons/ic_mail.png')}
+        />
+        <Label>Bàn làm việc</Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   );

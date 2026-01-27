@@ -34,6 +34,7 @@ function Routers() {
                 contentStyle: { backgroundColor: color.bg },
                 headerStyle: { backgroundColor: color.bg },
                 headerTintColor: color.text,
+                
             }}
         >
             <Stack.Protected guard={renderStatusAuth.isLogin}>
@@ -44,18 +45,6 @@ function Routers() {
                         headerShown: false
                     }}
                 />
-               
-                {/* noti */}
-                {/* <Stack.Screen
-                    name="notification/[id]"
-                    options={{
-                        title: 'Chi tiết thông báo',
-                        headerBackButtonDisplayMode: "minimal",
-                        contentStyle: {
-                            paddingBottom: bottomBarHeight
-                        }
-                    }}
-                /> */}
             </Stack.Protected>
 
             <Stack.Protected guard={!renderStatusAuth.isLogin}>

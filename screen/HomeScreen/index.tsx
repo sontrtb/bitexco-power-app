@@ -1,8 +1,11 @@
-import TextUi from '@/components/ui/TextUi';
 import useColor from '@/hooks/useColor';
 import { PADDING_PAGE } from '@/theme/layout';
 import Constants from 'expo-constants';
-import { Platform, ScrollView, StyleSheet } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import ActionHome from './components/ActionHome';
+import Approve from './components/Approve';
+import BgHome from './components/BgHome';
+import PaymentRequiresApproval from './components/PaymentRequiresApproval';
 
 const statusBarHeight = Constants.statusBarHeight;
 
@@ -17,7 +20,13 @@ export default function HomeScreen() {
       style={[styles.root, { backgroundColor: color.bg }]}
       contentInset={{ top: Platform.OS === "android" ? 0 : -(statusBarHeight + 10) }}
     >
-        <TextUi>HomeScreen</TextUi>
+      <BgHome />
+
+      <View style={styles.content}>
+        <ActionHome />
+        <Approve />
+        <PaymentRequiresApproval />
+      </View>
     </ScrollView >
   );
 }
@@ -30,9 +39,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingBottom: Platform.OS === "android" ? 130 : 20,
   },
-  addressWrap: {
-    marginTop: 200,
-    // marginTop: 86,
+  content: {
     marginHorizontal: PADDING_PAGE,
+    gap: PADDING_PAGE
   }
 });
