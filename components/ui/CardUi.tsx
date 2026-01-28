@@ -30,7 +30,7 @@ function CardUi(props: CardUiProps) {
             ]}
         >
             {
-                title && <TitleUi style={{ paddingBottom: 12}}>{title}</TitleUi>
+                title && <TitleUi style={{ paddingBottom: 12, textAlign: "center"}}>{title}</TitleUi>
             }
             {props.children}
         </View>

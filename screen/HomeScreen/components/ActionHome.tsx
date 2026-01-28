@@ -3,9 +3,12 @@ import Row from "@/components/ui/Row";
 import TextUi from "@/components/ui/TextUi";
 import TouchableOpacityUi from "@/components/ui/TouchableOpacityUi";
 import IcUser from "@/icons/IcUser";
+import { useRouter } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
 function ActionHome() {
+    const router = useRouter()
+
     const actions = [
         {
             label: "HRM",
@@ -52,10 +55,16 @@ function ActionHome() {
                     text="Trang cá nhân"
                     type="outline"
                     style={{flex: 1}}
+                    onPress={() => {
+                        router.push("/profile")
+                    }}
                 />
                 <ButtonUi
                     text="Thông số vận hành"
                     style={styles.btnInforOperate}
+                    onPress={() => {
+                        router.push("/operating-parameters")
+                    }}
                 />
             </Row>
         </View>

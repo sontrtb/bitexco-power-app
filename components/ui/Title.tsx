@@ -7,7 +7,7 @@ function TitleUi(props: TextProps) {
             {...props}
             style={[
                 {
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: "500",
                 },
                 props.style

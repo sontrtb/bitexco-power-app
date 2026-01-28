@@ -26,7 +26,7 @@ function Routers() {
         return ({
             isLogin: false,
         })
-    }, [ user])
+    }, [user])
 
     return (
         <Stack
@@ -34,7 +34,7 @@ function Routers() {
                 contentStyle: { backgroundColor: color.bg },
                 headerStyle: { backgroundColor: color.bg },
                 headerTintColor: color.text,
-                
+
             }}
         >
             <Stack.Protected guard={renderStatusAuth.isLogin}>
@@ -45,6 +45,29 @@ function Routers() {
                         headerShown: false
                     }}
                 />
+
+                <Stack.Screen
+                    name="profile"
+                    options={{
+                        title: 'Trang cá nhân',
+                        headerBackButtonDisplayMode: "minimal",
+                        contentStyle: {
+                            paddingBottom: bottomBarHeight
+                        }
+                    }}
+                />
+
+                <Stack.Screen
+                    name="operating-parameters"
+                    options={{
+                        title: 'Thông số vận hành',
+                        headerBackButtonDisplayMode: "minimal",
+                        contentStyle: {
+                            paddingBottom: bottomBarHeight
+                        }
+                    }}
+                />
+
             </Stack.Protected>
 
             <Stack.Protected guard={!renderStatusAuth.isLogin}>
