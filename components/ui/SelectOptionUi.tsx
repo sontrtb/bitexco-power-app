@@ -87,8 +87,9 @@ export default SelectOptionUi
 const styles = StyleSheet.create({
     root: {},
     input: {
-        borderBottomWidth: 1,
+        borderWidth: 1,
         padding: 12,
+        borderRadius: 8,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"

@@ -2,6 +2,7 @@ import useColor from '@/hooks/useColor';
 import { PADDING_PAGE } from '@/theme/layout';
 import Constants from 'expo-constants';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import AbsentOvertime from './components/AbsentOvertime';
 import ActionHome from './components/ActionHome';
 import Approve from './components/Approve';
 import BgHome from './components/BgHome';
@@ -14,7 +15,7 @@ export default function HomeScreen() {
 
   return (
     <ScrollView
-      bounces={false}
+      // bounces={false}
       contentContainerStyle={[styles.contentContainer]}
       showsVerticalScrollIndicator={false}
       style={[styles.root, { backgroundColor: color.bg }]}
@@ -26,6 +27,7 @@ export default function HomeScreen() {
         <ActionHome />
         <Approve />
         <PaymentRequiresApproval />
+        <AbsentOvertime />
       </View>
     </ScrollView >
   );
