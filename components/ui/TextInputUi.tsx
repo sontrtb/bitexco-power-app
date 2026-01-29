@@ -31,14 +31,7 @@ function TextInputUi(props: TextInputUiProps) {
             {label && <TextUi style={styles.label}>{label} {required && <TextUi style={styles.required}>*</TextUi>}</TextUi>}
             <View style={styles.inputContainer}>
                 <TextInput
-                    style={[
-                        styles.textInput,
-                        {
-                            borderColor: isFocused ? color.primary : color.borderColor,
-                            height: height,
-                            paddingRight: isPassword ? 50 : 12
-                        }
-                    ]}
+                    
                     placeholderTextColor={color.disable}
                     onFocus={(e) => {
                         setIsFocused(true)
@@ -50,6 +43,15 @@ function TextInputUi(props: TextInputUiProps) {
                     }}
                     secureTextEntry={isPassword && !isPasswordVisible}
                     {...restProps}
+                    style={[
+                        styles.textInput,
+                        {
+                            borderColor: isFocused ? color.primary : color.borderColor,
+                            height: height,
+                            paddingRight: isPassword ? 50 : 12
+                        },
+                        restProps.style
+                    ]}
                 />
                 {isPassword && (
                     <TouchableOpacity

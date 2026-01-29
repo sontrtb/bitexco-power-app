@@ -1,10 +1,9 @@
 import HeaderBottomTab from "@/components/commons/HeaderBottomTab";
-import ButtonUi from "@/components/ui/ButtonUi";
-import Row from "@/components/ui/Row";
+import ButtonSelectUi from "@/components/ui/ButtonSelectUi";
 import SearchInputUi from "@/components/ui/SearchInputUi";
 import SpaceUi from "@/components/ui/SpaceUi";
-import useColor from "@/hooks/useColor";
 import { PADDING_PAGE } from "@/theme/layout";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { FlatList, Platform, StyleSheet, View } from "react-native";
 import BottomSheetFilterOfficalDispatch from "./BottomSheetFilterOfficalDispatch";
@@ -41,9 +40,12 @@ const listTab = [
 ]
 
 function OfficialDispatch() {
-    const colors = useColor()
+    const router = useRouter()
 
-    const [tabSelected, setTabSelected] = useState("in")
+    const [tabSelected, setTabSelected] = useState({
+        value: "in",
+        label: "Công văn đến"
+    })
 
     const [showFilter, setShowFilter] = useState(false)
 
@@ -52,26 +54,15 @@ function OfficialDispatch() {
             <HeaderBottomTab title={`Công văn\ncủa bạn!`} />
 
             <View style={styles.content}>
-                <Row>
-                    {
-                        listTab.map(tab => (
-                            <ButtonUi
-                                key={tab.value}
-                                text={tab.label}
-                                style={[styles.tab, tabSelected !== tab.value && {
-                                    backgroundColor: colors.disable,
-                                    borderColor: colors.disable,
-
-                                }]}
-                                styleText={tabSelected !== tab.value && { color: colors.textNeutral }}
-                                onPress={() => setTabSelected(tab.value)}
-                            />
-                        ))
-                    }
-                </Row>
+                <ButtonSelectUi
+                    listTab={listTab}
+                    tabSelected={tabSelected}
+                    setTabSelected={setTabSelected}
+                />
 
                 <SearchInputUi 
                     onFilter={() => {setShowFilter(true)}}
+                    onAdd={() => {router.push("/official-dispatch-create")}}
                 />
 
                 <FlatList
@@ -106,8 +97,5 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: PADDING_PAGE,
         gap: PADDING_PAGE
-    },
-    tab: {
-        borderRadius: 12
     },
 })

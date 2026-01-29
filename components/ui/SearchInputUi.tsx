@@ -8,10 +8,11 @@ import TouchableOpacityUi from "./TouchableOpacityUi";
 
 interface SearchInputUiProps {
     onFilter?: () => void
+    onAdd?: () => void;
 }
 
 function SearchInputUi(props: SearchInputUiProps) {
-    const {onFilter} = props;
+    const { onFilter, onAdd } = props;
 
     const colors = useColor()
 
@@ -27,9 +28,13 @@ function SearchInputUi(props: SearchInputUiProps) {
                     <MaterialIcons name="tune" size={20} color={colors.text} />
                 </TouchableOpacityUi>
             </View>
-            <ButtonUi style={styles.btnAdd}>
-                <AntDesign name="plus" size={24} color="#fff" />
-            </ButtonUi>
+            {
+                onAdd &&
+                <ButtonUi style={styles.btnAdd} onPress={onAdd}>
+                    <AntDesign name="plus" size={24} color="#fff" />
+                </ButtonUi>
+            }
+
         </View>
     )
 }

@@ -1,1 +1,1 @@
-export { default } from "@/screen/OfficialDispatch";
+export { default } from "@/screen/official-dispatch/OfficialDispatch";

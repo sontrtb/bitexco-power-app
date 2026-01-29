@@ -32,9 +32,8 @@ function Routers() {
         <Stack
             screenOptions={{
                 contentStyle: { backgroundColor: color.bg },
-                headerStyle: { backgroundColor: color.bg },
+                headerStyle: { backgroundColor: color.bgCard },
                 headerTintColor: color.text,
-
             }}
         >
             <Stack.Protected guard={renderStatusAuth.isLogin}>
@@ -61,6 +60,17 @@ function Routers() {
                     name="operating-parameters"
                     options={{
                         title: 'Thông số vận hành',
+                        headerBackButtonDisplayMode: "minimal",
+                        contentStyle: {
+                            paddingBottom: bottomBarHeight
+                        }
+                    }}
+                />
+
+                <Stack.Screen
+                    name="official-dispatch-create"
+                    options={{
+                        title: 'Thêm mới công văn',
                         headerBackButtonDisplayMode: "minimal",
                         contentStyle: {
                             paddingBottom: bottomBarHeight

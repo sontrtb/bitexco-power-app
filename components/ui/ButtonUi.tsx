@@ -40,7 +40,7 @@ function ButtonUi(props: ButtonUiProps) {
                 borderColor = color.primary
                 break
             case "outline":
-                bgColor = color.bg
+                bgColor = color.bgCard
                 textColor = color.primary
                 borderColor = color.primary
                 break

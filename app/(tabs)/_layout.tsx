@@ -90,16 +90,16 @@ export default function TabLayout() {
       </NativeTabs.Trigger>
 
        <NativeTabs.Trigger
-        name="user"
+        name="presentation"
       >
         <Icon
           src={require('@/assets/icons/ic_document_line.png')}
         />
-        <Label>Bàn làm việc</Label>
+        <Label>Tờ trình</Label>
       </NativeTabs.Trigger>
 
        <NativeTabs.Trigger
-        name="user2"
+        name="user"
       >
         <Icon
           src={require('@/assets/icons/ic_job.png')}
