@@ -1,5 +1,5 @@
 import { bioRegister } from '@/api/auth';
-import HeaderHome from '@/components/commons/HeaderHome';
+import HeaderHome from '@/components/commons/HeaderBottomTab';
 import BottomSheetAction from '@/components/ui/BottomSheetAction';
 import ButtonUi from '@/components/ui/ButtonUi';
 import CardUi from '@/components/ui/CardUi';

@@ -14,12 +14,12 @@ export interface IColor {
 const colors: IColor = {
     primary: "#065B61",
 
-    bg: "#F6F6F6",
+    bg: "#F1F1F2",
 
     shadow: "rgba(0,0,0,0.15)",
     text: "#181818",
 
-    textNeutral: "#6f6f6f",
+    textNeutral: "#899095",
 
     bgCard: "#FFFFFF",
     bgImage: "#effafb",
@@ -27,7 +27,7 @@ const colors: IColor = {
     bottomTab: "#FFFFFF",
 
     borderColor: "#D8D8D8",
-    disable: "#CFCFCF"
+    disable: "#E6EAED"
 };
 
 

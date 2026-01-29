@@ -1,15 +1,17 @@
 import useTheme from "@/hooks/useColor";
-import { useMemo } from "react";
-import { ActivityIndicator, StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from "react-native";
+import { ReactElement, useMemo } from "react";
+import { ActivityIndicator, StyleProp, StyleSheet, TextStyle, TouchableOpacity, ViewStyle } from "react-native";
 import TextUi from "./TextUi";
 
 interface ButtonUiProps {
-    text: string;
+    children?: ReactElement;
+    text?: string;
     type?: "primary" | "outline";
     style?: StyleProp<ViewStyle>;
     onPress?: () => void;
     isLoading?: boolean;
-    disable?: boolean
+    disable?: boolean;
+    styleText?: StyleProp<TextStyle>;
 }
 
 function ButtonUi(props: ButtonUiProps) {
@@ -19,7 +21,9 @@ function ButtonUi(props: ButtonUiProps) {
         style,
         onPress,
         isLoading,
-        disable
+        disable,
+        styleText,
+        children
     } = props;
 
     const color = useTheme()
@@ -59,7 +63,7 @@ function ButtonUi(props: ButtonUiProps) {
             ]}
             onPress={onPress}
         >
-            {isLoading ? <ActivityIndicator size="small" color="#ffffff" /> : <TextUi style={{ color: colorBtn.textColor, fontWeight: "500" }}>{text}</TextUi>}
+            {isLoading ? <ActivityIndicator size="small" color="#ffffff" /> : (children ?? <TextUi style={[{ color: colorBtn.textColor, fontWeight: "500" }, styleText]}>{text}</TextUi>)}
         </TouchableOpacity>
     )
 }
