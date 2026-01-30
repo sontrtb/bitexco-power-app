@@ -6,7 +6,7 @@ import BottomSheetAction from "./BottomSheetAction";
 import TextUi from "./TextUi";
 import TouchableOpacityUi from "./TouchableOpacityUi";
 
-interface IOption {
+export interface IOption {
     value: string | number | boolean;
     label: string;
     subLabel?: string;
@@ -19,6 +19,7 @@ interface SelectOptionProps {
     onChange?: (v: IOption) => void;
     errorText?: string;
     required?: boolean;
+    value?: IOption
 }
 
 function SelectOptionUi(props: SelectOptionProps) {
@@ -28,14 +29,15 @@ function SelectOptionUi(props: SelectOptionProps) {
         label,
         placeholder,
         errorText,
-        required
+        required,
+        value
     } = props
 
     const color = useColor()
 
     const [show, setShow] = useState(false)
 
-    const [selectValue, setSelectValue] = useState<IOption>()
+    const [selectValue, setSelectValue] = useState<IOption | undefined>(value)
 
     const onChangeState = (v: IOption) => {
         onChange?.(v)

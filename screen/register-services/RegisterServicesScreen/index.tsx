@@ -1,12 +1,13 @@
 import HeaderBottomTab from "@/components/commons/HeaderBottomTab";
 import ButtonSelectUi from "@/components/ui/ButtonSelectUi";
-import SearchInputUi from "@/components/ui/SearchInputUi";
-import SpaceUi from "@/components/ui/SpaceUi";
-import BottomSheetFilterOfficalDispatch from "@/screen/official-dispatch/OfficialDispatch/BottomSheetFilterOfficalDispatch";
-import CardOfficialDispatch from "@/screen/official-dispatch/OfficialDispatch/CardOfficialDispatch";
+import SelectOptionUi, { IOption } from "@/components/ui/SelectOptionUi";
 import { PADDING_PAGE } from "@/theme/layout";
 import { useState } from "react";
-import { FlatList, Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
+import Absent from "./components/Absent";
+import MeetingRoom from "./components/MeetingRoom";
+import MoreHours from "./components/MoreHours";
+import UseCar from "./components/UseCar";
 
 const listTab = [
     {
@@ -19,28 +20,43 @@ const listTab = [
     },
 ]
 
-const DATA = [
+const selectType: IOption[] = [
     {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        title: 'First Item',
+        value: "1",
+        label: "Vắng mặt"
     },
     {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Second Item',
+        value: "2",
+        label: "Thêm giờ"
     },
     {
-        id: '58694a0f-3da1-471f-bd96-145571e29d72',
-        title: 'Third Item',
+        value: "3",
+        label: "Phòng họp"
     },
-];
+    {
+        value: "4",
+        label: "Sử dụng xe"
+    },
+]
+
+const renderContent = (type: string) => {
+    if (type === "1") {
+        return <Absent />
+    } else if (type === "2") {
+        return <MoreHours />
+    } else if (type === "3") {
+        return <MeetingRoom />
+    } else if (type === "4") {
+        return <UseCar />
+    }
+}
 
 function RegisterServicesScreen() {
-    const [showFilter, setShowFilter] = useState(false)
+    const [tabSelected, setTabSelected] = useState(listTab[0])
 
-    const [tabSelected, setTabSelected] = useState({
-        value: "in",
-        label: "Tôi phê duyệt"
-    })
+    const [type, setType] = useState(selectType[0])
+
+
 
     return (
         <View style={styles.root}>
@@ -53,38 +69,14 @@ function RegisterServicesScreen() {
                     setTabSelected={setTabSelected}
                 />
 
-
-                <FlatList
-                    style={{ flex: 1 }}
-                    ListHeaderComponent={<View style={{ gap: PADDING_PAGE, paddingBottom: PADDING_PAGE }}>
-                        {/* <Row>
-                            <View style={styles.column}>
-                                <CardCategory color="#97B1CB" type="left" />
-                                <CardCategory color="#60C486" type="bottom" height={165} />
-                                <CardCategory color="#C4C460" type="left" />
-                            </View>
-                            <View style={styles.column}>
-                                <CardCategory color="#F0A424" type="top" height={130} />
-                                <CardCategory color="#C58D8E" type="right" />
-                                <CardCategory color="#C5B0D4" type="bottom" height={135} />
-                            </View>
-                        </Row> */}
-
-                        <SearchInputUi onFilter={() => { setShowFilter(true) }} />
-                    </View>}
-                    contentContainerStyle={styles.list}
-                    data={DATA}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <CardOfficialDispatch />}
-                    keyExtractor={item => item.id}
-                    ItemSeparatorComponent={() => <SpaceUi height={12} />}
+                <SelectOptionUi
+                    options={selectType}
+                    value={type}
+                    onChange={(v) => setType(v)}
                 />
-            </View>
 
-            <BottomSheetFilterOfficalDispatch
-                isModalVisible={showFilter}
-                setModalVisible={setShowFilter}
-            />
+                {renderContent(type.value.toString())}
+            </View>
         </View>
     )
 }
