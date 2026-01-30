@@ -98,23 +98,24 @@ export default function TabLayout() {
         <Label>Tờ trình</Label>
       </NativeTabs.Trigger>
 
-       <NativeTabs.Trigger
-        name="user"
-      >
-        <Icon
-          src={require('@/assets/icons/ic_job.png')}
-        />
-        <Label>Bàn làm việc</Label>
-      </NativeTabs.Trigger>
-
       <NativeTabs.Trigger
-        name="user3"
+        name="register-services"
       >
         <Icon
           src={require('@/assets/icons/ic_mail.png')}
         />
-        <Label>Bàn làm việc</Label>
+        <Label>Đăng ký</Label>
       </NativeTabs.Trigger>
+
+       <NativeTabs.Trigger
+        name="user"
+      >
+        <Icon
+          src={require('@/assets/icons/ic_three_dot.png')}
+        />
+        <Label>Cài đặt</Label>
+      </NativeTabs.Trigger>
+
     </NativeTabs>
   );
 }

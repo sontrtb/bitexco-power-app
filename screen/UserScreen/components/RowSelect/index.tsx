@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
         paddingVertical: 12
     },
     text: {
-        fontSize: 16,
+        fontSize: 14,
+        fontWeight: "600"
     },
     textValue: {
         fontSize: 16,

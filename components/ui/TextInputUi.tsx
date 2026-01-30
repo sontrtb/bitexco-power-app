@@ -31,8 +31,7 @@ function TextInputUi(props: TextInputUiProps) {
             {label && <TextUi style={styles.label}>{label} {required && <TextUi style={styles.required}>*</TextUi>}</TextUi>}
             <View style={styles.inputContainer}>
                 <TextInput
-                    
-                    placeholderTextColor={color.disable}
+                    placeholderTextColor={color.textNeutral}
                     onFocus={(e) => {
                         setIsFocused(true)
                         restProps.onFocus?.(e)

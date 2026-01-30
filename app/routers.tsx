@@ -78,6 +78,17 @@ function Routers() {
                     }}
                 />
 
+                <Stack.Screen
+                    name="user-update"
+                    options={{
+                        title: 'Cập nhật thông tin cá nhân',
+                        headerBackButtonDisplayMode: "minimal",
+                        contentStyle: {
+                            paddingBottom: bottomBarHeight
+                        }
+                    }}
+                />
+
             </Stack.Protected>
 
             <Stack.Protected guard={!renderStatusAuth.isLogin}>

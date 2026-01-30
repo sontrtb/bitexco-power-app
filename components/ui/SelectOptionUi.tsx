@@ -57,7 +57,7 @@ function SelectOptionUi(props: SelectOptionProps) {
                     setShow(true)
                 )}
             >
-                <TextUi style={{ color: selectValue ? color.text : color.disable }}>{selectValue?.label ?? placeholder ?? "Chọn..."}</TextUi>
+                <TextUi style={{ color: selectValue ? color.text : color.textNeutral }}>{selectValue?.label ?? placeholder ?? "Chọn..."}</TextUi>
                 <Feather name="chevron-down" size={20} color={color.text} />
             </TouchableOpacityUi>
             {

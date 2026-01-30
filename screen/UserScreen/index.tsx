@@ -1,41 +1,22 @@
-import { bioRegister } from '@/api/auth';
-import HeaderHome from '@/components/commons/HeaderBottomTab';
-import BottomSheetAction from '@/components/ui/BottomSheetAction';
-import ButtonUi from '@/components/ui/ButtonUi';
-import CardUi from '@/components/ui/CardUi';
-import LoadingScreen from '@/components/ui/LoadingScreen';
 import ModalConfirm from '@/components/ui/ModalConfirm';
+import TextUi from '@/components/ui/TextUi';
+import TouchableOpacityUi from '@/components/ui/TouchableOpacityUi';
 import useColor from '@/hooks/useColor';
 import { useLogout } from '@/hooks/useLogout';
-import { toastCommingSoon, toastError } from '@/lib/toast';
-import { useBiometric } from '@/stores/useBiometric';
-import { useLang } from '@/stores/useLang';
-import { useTheme } from '@/stores/useTheme';
+import IcCompany from '@/icons/IcCompany';
+import IcContract from '@/icons/IcContract';
+import IcHelp from '@/icons/IcHelp';
+import IcLogout from '@/icons/IcLogout';
+import IcWallet from '@/icons/IcWallet';
+import { toastCommingSoon } from '@/lib/toast';
 import { PADDING_PAGE } from '@/theme/layout';
 import Feather from '@expo/vector-icons/Feather';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { useMutation } from '@tanstack/react-query';
-import * as LocalAuthentication from 'expo-local-authentication';
 import { useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import HeaderSetting from './components/HeaderSetting';
 import RowSelect from './components/RowSelect';
 import UserCard from './components/UserCard';
-
-const listLanguage = [
-  {
-    text: "lang.vn",
-    code: "vn"
-  },
-  {
-    text: "lang.en",
-    code: "en"
-  },
-  {
-    text: "lang.lo",
-    code: "lo"
-  }
-]
 
 export default function UserScreen() {
   const color = useColor()
@@ -44,103 +25,29 @@ export default function UserScreen() {
 
   const router = useRouter()
 
-  const { setEnabelBiometric, enabelBiometric } = useBiometric()
-
-  const { setLang, lang } = useLang()
-
-  const textLang = listLanguage.find(l => l.code === lang)?.text
-
-  const [openChangeLang, setOpenChangeLang] = useState(false)
-
   const [openConfirmDeleteAccount, setOpenConfirmDeleteAccount] = useState(false)
 
-  const [openChangeBiometric, setOpenChangeBiometric] = useState(false)
-
-  // theme
-  const { changeTheme, theme } = useTheme()
-  const renderTextTheme = useMemo(() => {
-    switch (theme) {
-      case "dart":
-        return "theme.dart"
-      case "light":
-        return "theme.light"
-      default: return "theme.auto"
-    }
-  }, [theme])
-
-  //
-  const changeBiometric = () => {
-    setOpenChangeBiometric(true)
-  }
-
-  const bioRegisterQuery = useMutation({
-    mutationFn: bioRegister,
-    onSuccess: (res) => {
-      setEnabelBiometric({
-        enabel: true,
-        data: res.data
-      })
-    },
-    onError: (err) => {
-      console.log("err", err)
-    }
-  })
-  const onChangeBiometric = () => {
-    if (enabelBiometric?.enabel) {
-      setEnabelBiometric(undefined)
-    } else {
-      LocalAuthentication.authenticateAsync()
-        .then(res => {
-          if (res.success) {
-            bioRegisterQuery.mutate()
-          } else {
-            toastError("Bật đăng nhập thất bại")
-          }
-        })
-        .catch(err => {
-          toastError("Bật đăng nhập thất bại")
-        })
-
-    }
-  }
-
-  //
   const actions = [
-    // {
-    //   text: "user.changePassword",
-    //   icon: <Feather name="lock" size={18} color={color.text} />
-    // },
     {
-      text: "user.lang",
-      icon: <Feather name="globe" size={18} color={color.text} />,
-      textValue: textLang,
-      onPress: () => {
-        toastCommingSoon()
-        // setOpenChangeLang(true)
-      }
+      text: "Đề nghị thu tiền",
+      icon: <IcWallet />,
+      onPress: toastCommingSoon
     },
     {
-      text: "user.theme",
-      icon: <Feather name="moon" size={18} color={color.text} />,
-      textValue: renderTextTheme,
-      onPress: changeTheme
-    },
-    {
-      text: "Đăng nhập sinh trắc học",
-      icon: <MaterialIcons name="password" size={18} color={color.text} />,
-      textValue: enabelBiometric ? "Bật" : "Tắt",
-      onPress: changeBiometric
+      text: "Đề nghị chi tiền",
+      icon: <IcWallet />,
+      onPress: toastCommingSoon
     },
 
-     {
-      text: "Điều khoản sử dụng",
-      icon: <Feather name="shield" size={18} color={color.text} />,
+    {
+      text: "Quản lý hợp đồng",
+      icon: <IcContract />,
       onPress: () => router.push("/tems/terms-of-use")
     },
     {
-      text: "Chính sách bảo mật",
-      icon: <Feather name="shield" size={18} color={color.text} />,
-       onPress: () => router.push("/tems/confidentiality-policy")
+      text: "Hành chính",
+      icon: <IcCompany />,
+      onPress: () => router.push("/tems/confidentiality-policy")
     },
     {
       text: "user.deleteAccount",
@@ -156,14 +63,14 @@ export default function UserScreen() {
   }
 
   return (
-    <LoadingScreen isLoading={bioRegisterQuery.isPending}>
-      <HeaderHome title='Tài khoản' />
+    <View>
+      <HeaderSetting />
       <ScrollView contentContainerStyle={[styles.container, { backgroundColor: color.bg }]}>
 
         <View style={styles.content}>
           <UserCard />
 
-          <CardUi>
+          <View>
             {
               actions.map((a, index) => (
                 <RowSelect
@@ -172,25 +79,25 @@ export default function UserScreen() {
                 />
               ))
             }
-          </CardUi>
 
-          <ButtonUi
-            text='Đăng xuất'
-            onPress={onLogout}
-          />
+            <TextUi style={[styles.textLabel, { color: color.textNeutral }]}>Hỗ trợ</TextUi>
+            <RowSelect
+              text="Hướng dẫn sử dụng"
+              icon={<IcHelp />}
+            />
+          </View>
+
+          <View style={styles.center}>
+            <TouchableOpacityUi
+              onPress={() => onLogout()}
+            >
+              <View style={styles.logoutWrap}>
+                <IcLogout />
+                <TextUi style={styles.textLogout}>Đăng xuất</TextUi>
+              </View>
+            </TouchableOpacityUi>
+          </View>
         </View>
-
-        <BottomSheetAction
-          isModalVisible={openChangeLang}
-          setModalVisible={setOpenChangeLang}
-          actions={listLanguage.map(l => ({
-            text: l.text,
-            onPress: () => {
-              setLang(l.code as any)
-              setOpenChangeLang(false)
-            }
-          }))}
-        />
 
         <ModalConfirm
           open={openConfirmDeleteAccount}
@@ -199,16 +106,8 @@ export default function UserScreen() {
           des={`Tài khoản của bạn sẽ được xoá trên hệ thống.\n Xác nhận xoá ??`}
           onOk={onDeleteAccount}
         />
-
-        <ModalConfirm
-          open={openChangeBiometric}
-          setOpen={setOpenChangeBiometric}
-          title={`Xác nhận ${enabelBiometric ? "tắt" : "bật"} đăng nhập sinh trắc học`}
-          des="Đăng nhập sinh trắc học giúp đăng nhập nhanh trên máy khi hết phiên đăng nhập"
-          onOk={onChangeBiometric}
-        />
       </ScrollView>
-    </LoadingScreen>
+    </View>
   );
 }
 
@@ -219,7 +118,23 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    gap: PADDING_PAGE,
+    gap: 32,
     padding: PADDING_PAGE,
+  },
+  textLabel: {
+    fontSize: 12,
+    marginTop: 32
+  },
+  logoutWrap: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  textLogout: {
+    fontWeight: "600",
+    color: "#FF0000"
+  },
+  center: {
+    alignItems: "center"
   }
 });
