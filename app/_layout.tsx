@@ -18,15 +18,15 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    "LexendDeca-Thin": require("../assets/fonts/LexendDeca-Thin.ttf"),
-    "LexendDeca-ExtraLight": require("../assets/fonts/LexendDeca-ExtraLight.ttf"),
-    "LexendDeca-Light": require("../assets/fonts/LexendDeca-Light.ttf"),
-    "LexendDeca-Regular": require("../assets/fonts/LexendDeca-Regular.ttf"),
-    "LexendDeca-Medium": require("../assets/fonts/LexendDeca-Medium.ttf"),
-    "LexendDeca-SemiBold": require("../assets/fonts/LexendDeca-SemiBold.ttf"),
-    "LexendDeca-Bold": require("../assets/fonts/LexendDeca-Bold.ttf"),
-    "LexendDeca-ExtraBold": require("../assets/fonts/LexendDeca-ExtraBold.ttf"),
-    "LexendDeca-Black": require("../assets/fonts/LexendDeca-Black.ttf"),
+    "PublicSans-Thin": require("../assets/fonts/PublicSans-Thin.ttf"),
+    "PublicSans-ExtraLight": require("../assets/fonts/PublicSans-ExtraLight.ttf"),
+    "PublicSans-Light": require("../assets/fonts/PublicSans-Light.ttf"),
+    "PublicSans-Regular": require("../assets/fonts/PublicSans-Regular.ttf"),
+    "PublicSans-Medium": require("../assets/fonts/PublicSans-Medium.ttf"),
+    "PublicSans-SemiBold": require("../assets/fonts/PublicSans-SemiBold.ttf"),
+    "PublicSans-Bold": require("../assets/fonts/PublicSans-Bold.ttf"),
+    "PublicSans-ExtraBold": require("../assets/fonts/PublicSans-ExtraBold.ttf"),
+    "PublicSans-Black": require("../assets/fonts/PublicSans-Black.ttf"),
   });
 
 

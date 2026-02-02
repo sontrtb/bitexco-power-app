@@ -14,15 +14,15 @@ type FontWeight =
   | "black";
 
 const fontMap: Record<FontWeight, string> = {
-  thin: "LexendDeca-Thin",
-  extraLight: "LexendDeca-ExtraLight",
-  light: "LexendDeca-Light",
-  regular: "LexendDeca-Regular",
-  medium: "LexendDeca-Medium",
-  semiBold: "LexendDeca-SemiBold",
-  bold: "LexendDeca-Bold",
-  extraBold: "LexendDeca-ExtraBold",
-  black: "LexendDeca-Black",
+  thin: "PublicSans-Thin",
+  extraLight: "PublicSans-ExtraLight",
+  light: "PublicSans-Light",
+  regular: "PublicSans-Regular",
+  medium: "PublicSans-Medium",
+  semiBold: "PublicSans-SemiBold",
+  bold: "PublicSans-Bold",
+  extraBold: "PublicSans-ExtraBold",
+  black: "PublicSans-Black",
 };
 
 
