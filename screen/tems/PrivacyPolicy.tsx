@@ -1,15 +1,13 @@
-import TextUi from "@/components/ui/TextUi";
-import TitleUi from "@/components/ui/Title";
 import useColor from "@/hooks/useColor";
 import { PADDING_PAGE } from "@/theme/layout";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 function PrivacyPolicy() {
     const color = useColor()
 
     return (
         <ScrollView style={{flex: 1}} contentContainerStyle={[styles.root, {backgroundColor: color.bg}]}>
-            <View style={styles.header}>
+            {/* <View style={styles.header}>
                 <TextUi style={styles.appName}>Ứng dụng SMAC</TextUi>
                 <TextUi style={styles.updateDate}>Cập nhật lần cuối: 17/12/2025</TextUi>
             </View>
@@ -125,7 +123,7 @@ function PrivacyPolicy() {
                 <TextUi style={styles.footerText}>
                     Cảm ơn bạn đã tin tưởng và sử dụng Ứng dụng SMAC.
                 </TextUi>
-            </View>
+            </View> */}
         </ScrollView>
     )
 }

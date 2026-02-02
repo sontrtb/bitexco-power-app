@@ -26,18 +26,26 @@ const data = [
         value: "12/09/2025"
     },
     {
-        label: "Lý do",
+        label: "Nội dung công việc",
         value: "Đăng ký làm online"
+    },
+    {
+        label: "Thời gian",
+        value: `26/11/2025 (8:00 - 17:00)\n27/11/2025 (8:00 - 17:00)`
+    },
+    {
+        label: "Tổng số giờ",
+        value: "16"
     },
 ];
 
 
-function AbsentCard() {
+function MoreHoursCard() {
     const color = useColor()
     const router = useRouter()
     
     const goDetail = () => {
-        router.push("/register-services/absent-detail")
+        router.push("/register-services/more-hours-detail")
     }
 
     return (
@@ -83,4 +91,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default AbsentCard
+export default MoreHoursCard

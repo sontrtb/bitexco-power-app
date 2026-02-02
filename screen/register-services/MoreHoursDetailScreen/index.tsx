@@ -14,7 +14,7 @@ import ApprovalHistory from "../components/ApprovalHistory";
 import TableTime from "../components/TableTime";
 
 
-function AbsentDetailScreen() {
+function MoreHoursScreen() {
 
     return (
         <ScrollView contentContainerStyle={styles.root}>
@@ -45,25 +45,26 @@ function AbsentDetailScreen() {
                         label={"Ngày đăng ký"}
                         value={"15/09/2024"}
                     />
-                    <RowValueLable
-                        label={"Loại hình"}
-                        value={"Làm việc Online"}
+                     <RowValueLable
+                        label={"Người đăng ký"}
+                        value={"Pham Van A"}
                     />
                     <RowValueLable
                         label={"Lý do vắng mặt"}
                         value={"TEST"}
                     />
-                    <RowValueLable
-                        label={"Mô tả chi tiết"}
-                        value={"TEST"}
-                    />
                 </View>
-
 
                 <LineUi style={{ marginVertical: 20 }} />
 
+                <TextUi style={styles.label}>Nội dung công việc thực hiện:</TextUi>
+                <TextUi style={[styles.label, { color: "#EE5D0A" }]}>TEST</TextUi>
+
+                <SpaceUi height={16} />
+
                 <TextUi style={styles.label}>Thời gian đăng ký:</TextUi>
-                <TextUi style={[styles.label, { color: "#EE5D0A" }]}>2 (ngày)</TextUi>
+                <TextUi style={[styles.label, { color: "#EE5D0A" }]}>16 (giờ)</TextUi>
+
 
                 <SpaceUi height={20} />
 
@@ -72,7 +73,7 @@ function AbsentDetailScreen() {
                 <SpaceUi height={20} />
 
                 <TextUi style={styles.label}>Hồ sơ đính kèm:</TextUi>
-                <TextUi>Phiếu đăng ký: Đăng ký làm việc Online</TextUi>
+                <TextUi>Phiếu đăng ký: Đăng ký thêm giờ</TextUi>
 
                 <SpaceUi height={20} />
 
@@ -111,7 +112,7 @@ function AbsentDetailScreen() {
     )
 }
 
-export default AbsentDetailScreen;
+export default MoreHoursScreen;
 
 const styles = StyleSheet.create({
     root: {

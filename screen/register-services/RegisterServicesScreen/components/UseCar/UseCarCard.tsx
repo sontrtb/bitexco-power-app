@@ -3,9 +3,8 @@ import ButtonUi from "@/components/ui/ButtonUi";
 import CardUi from "@/components/ui/CardUi";
 import Row from "@/components/ui/Row";
 import Tag from "@/components/ui/Tag";
-import TouchableOpacityUi from "@/components/ui/TouchableOpacityUi";
 import useColor from "@/hooks/useColor";
-import { useRouter } from "expo-router";
+// import { useRouter } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
 const data = [
@@ -14,34 +13,46 @@ const data = [
         value: <Tag type="error" text="Chờ duyệt" />
     },
     {
-        label: "Phòng ban",
-        value: "Nhân sự"
+        label: "Mã",
+        value: "ABC-05/2025-001"
     },
     {
-        label: "Loại hình",
-        value: "Làm online"
+        label: "Loại xe",
+        value: "Xe 4 chỗ"
     },
     {
-        label: "Ngày tạo",
-        value: "12/09/2025"
+        label: "Thời gian bắt đầu",
+        value: "12/09/2025 11:30:00"
     },
     {
-        label: "Lý do",
-        value: "Đăng ký làm online"
+        label: "Thời gian kết thúc",
+        value: "12/09/2025 12:00:00"
+    },
+     {
+        label: "Ưu tiên sử dụng",
+        value: "Công việc gấp"
+    },
+    {
+        label: "Mục đích sử dụng",
+        value: "Chở sếp đi công tác"
+    },
+    {
+        label: "Người đăng ký",
+        value: "Nguyễn Văn A"
     },
 ];
 
 
-function AbsentCard() {
+function UseCarCard() {
     const color = useColor()
-    const router = useRouter()
+    // const router = useRouter()
     
-    const goDetail = () => {
-        router.push("/register-services/absent-detail")
-    }
+    // const goDetail = () => {
+    //     router.push("/register-services/absent-detail")
+    // }
 
     return (
-        <TouchableOpacityUi onPress={goDetail}>
+        // <TouchableOpacityUi onPress={goDetail}>
             <CardUi style={styles.card}>
                 {
                     data.map((d, index) => (
@@ -68,7 +79,7 @@ function AbsentCard() {
                     />
                 </Row>
             </CardUi>
-        </TouchableOpacityUi>
+        // </TouchableOpacityUi>
     )
 }
 
@@ -83,4 +94,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default AbsentCard
+export default UseCarCard

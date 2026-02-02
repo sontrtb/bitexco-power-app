@@ -1,15 +1,13 @@
-import TextUi from "@/components/ui/TextUi";
-import TitleUi from "@/components/ui/Title";
 import useColor from "@/hooks/useColor";
 import { PADDING_PAGE } from "@/theme/layout";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 function TermsOfUse() {
     const color = useColor()
 
     return (
         <ScrollView style={{ flex: 1 }} contentContainerStyle={[styles.root, { backgroundColor: color.bg }]}>
-            <View style={styles.content}>
+            {/* <View style={styles.content}>
                 <TextUi style={styles.intro}>
                     Chào mừng bạn đến với Ứng dụng SMAC. Vui lòng đọc kỹ các điều khoản sử dụng dưới đây trước khi sử dụng ứng dụng.
                 </TextUi>
@@ -83,7 +81,7 @@ function TermsOfUse() {
                         Nếu có thắc mắc, vui lòng liên hệ bộ phận hỗ trợ của chúng tôi.
                     </TextUi>
                 </View>
-            </View>
+            </View> */}
         </ScrollView>
     )
 }

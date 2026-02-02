@@ -19,7 +19,7 @@ const colors: IColor = {
     shadow: "rgba(0,0,0,0.15)",
     text: "#181818",
 
-    textNeutral: "#899095",
+    textNeutral: "#7c7c7c",
 
     bgCard: "#FFFFFF",
     bgImage: "#effafb",

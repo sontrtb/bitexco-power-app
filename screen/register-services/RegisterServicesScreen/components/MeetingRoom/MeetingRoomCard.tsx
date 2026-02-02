@@ -3,9 +3,8 @@ import ButtonUi from "@/components/ui/ButtonUi";
 import CardUi from "@/components/ui/CardUi";
 import Row from "@/components/ui/Row";
 import Tag from "@/components/ui/Tag";
-import TouchableOpacityUi from "@/components/ui/TouchableOpacityUi";
 import useColor from "@/hooks/useColor";
-import { useRouter } from "expo-router";
+// import { useRouter } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
 const data = [
@@ -14,34 +13,42 @@ const data = [
         value: <Tag type="error" text="Chờ duyệt" />
     },
     {
-        label: "Phòng ban",
-        value: "Nhân sự"
+        label: "Phòng họp",
+        value: "Phòng họp nhỏ"
     },
     {
-        label: "Loại hình",
-        value: "Làm online"
+        label: "Người đăng ký",
+        value: "Nguyễn Văn B"
     },
     {
-        label: "Ngày tạo",
-        value: "12/09/2025"
+        label: "Thời gian bắt đầu",
+        value: "12/09/2025 11:30:00"
     },
     {
-        label: "Lý do",
-        value: "Đăng ký làm online"
+        label: "Thời gian kết thúc",
+        value: "12/09/2025 12:00:00"
+    },
+     {
+        label: "Nội dung",
+        value: "Họp bàn phương án triển khai..."
+    },
+    {
+        label: "Người tham gia",
+        value: "Nguyễn Văn A, Trần Thi B"
     },
 ];
 
 
-function AbsentCard() {
+function MeetingRoomCard() {
     const color = useColor()
-    const router = useRouter()
+    // const router = useRouter()
     
-    const goDetail = () => {
-        router.push("/register-services/absent-detail")
-    }
+    // const goDetail = () => {
+    //     router.push("/register-services/absent-detail")
+    // }
 
     return (
-        <TouchableOpacityUi onPress={goDetail}>
+        // <TouchableOpacityUi onPress={goDetail}>
             <CardUi style={styles.card}>
                 {
                     data.map((d, index) => (
@@ -68,7 +75,7 @@ function AbsentCard() {
                     />
                 </Row>
             </CardUi>
-        </TouchableOpacityUi>
+        // </TouchableOpacityUi>
     )
 }
 
@@ -83,4 +90,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default AbsentCard
+export default MeetingRoomCard

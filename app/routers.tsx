@@ -89,6 +89,28 @@ function Routers() {
                     }}
                 />
 
+                <Stack.Screen
+                    name="register-services/absent-detail"
+                    options={{
+                        title: 'Chi tiết',
+                        headerBackButtonDisplayMode: "minimal",
+                        contentStyle: {
+                            paddingBottom: bottomBarHeight
+                        }
+                    }}
+                />
+
+                <Stack.Screen
+                    name="register-services/more-hours-detail"
+                    options={{
+                        title: 'Chi tiết',
+                        headerBackButtonDisplayMode: "minimal",
+                        contentStyle: {
+                            paddingBottom: bottomBarHeight
+                        }
+                    }}
+                />
+
             </Stack.Protected>
 
             <Stack.Protected guard={!renderStatusAuth.isLogin}>

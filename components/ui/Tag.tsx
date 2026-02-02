@@ -1,31 +1,41 @@
 
 
-import useColor from "@/hooks/useColor";
+import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import TextUi from "./TextUi";
 
 interface TagProps {
-    backgroundColor?: string;
+    type: "error"
     text?: string;
 }
 
 function Tag(props: TagProps) {
-    const color = useColor()
+    const { type, text } = props;
 
-    const { backgroundColor, text } = props;
+    const renderColor = useMemo(() => {
+        let textColor;
+        let bgColor;
+
+        switch (type) {
+            case "error":
+                textColor = "#E30B0B";
+                bgColor = "#EDB4B3";
+
+        }
+
+        return { textColor, bgColor }
+    }, [type])
 
     return (
-        <View style={styles.statusContainer}>
-            <View
-                style={[
-                    styles.statusBadge,
-                    { backgroundColor: backgroundColor ?? color.primary }
-                ]}
-            >
-                <TextUi style={styles.statusText}>
-                    {text}
-                </TextUi>
-            </View>
+        <View
+            style={[
+                styles.statusBadge,
+                { backgroundColor: renderColor.bgColor }
+            ]}
+        >
+            <TextUi style={[styles.statusText, { color: renderColor.textColor }]}>
+                {text}
+            </TextUi>
         </View>
     )
 }
@@ -33,14 +43,12 @@ function Tag(props: TagProps) {
 export default Tag
 
 const styles = StyleSheet.create({
-    statusContainer: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-    },
     statusBadge: {
         paddingHorizontal: 12,
-        paddingVertical: 6,
-        borderRadius: 16,
+        height: 24,
+        borderRadius: 8,
+        alignItems: "center",
+        justifyContent: "center"
     },
     statusText: {
         color: '#ffffff',

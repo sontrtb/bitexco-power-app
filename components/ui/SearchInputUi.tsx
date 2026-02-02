@@ -24,9 +24,13 @@ function SearchInputUi(props: SearchInputUiProps) {
                     placeholder="Tìm kiếm"
                     style={[styles.input,]}
                 />
-                <TouchableOpacityUi hitSlop={{ top: 5, bottom: 5, right: 5, left: 5 }} onPress={onFilter}>
-                    <MaterialIcons name="tune" size={20} color={colors.text} />
-                </TouchableOpacityUi>
+                {
+                    onFilter &&
+                    <TouchableOpacityUi hitSlop={{ top: 5, bottom: 5, right: 5, left: 5 }} onPress={onFilter}>
+                        <MaterialIcons name="tune" size={20} color={colors.text} />
+                    </TouchableOpacityUi>
+                }
+
             </View>
             {
                 onAdd &&

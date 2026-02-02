@@ -25,7 +25,7 @@ function RowValueLable(props: RowValueLableProps) {
 
             {
                 typeof value === "string" ?
-                    <TextUi style={styles.text} numberOfLines={3}>
+                    <TextUi style={[styles.text, {textAlign: "right"}]} numberOfLines={3}>
                         {value}
                     </TextUi> :
                     value
