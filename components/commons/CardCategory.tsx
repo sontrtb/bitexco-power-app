@@ -8,10 +8,13 @@ interface CardCategoryProps {
   color: string;
   type: "top" | "left" | "bottom" | "right";
   height?: number;
+  text: string;
+  count: number;
 }
 
 function CardCategory(props: CardCategoryProps) {
-  const { color, type, height } = props;
+  const { color, type, height, text, count } = props;
+
   const colors = useColor();
 
   const padding = useMemo(() => {
@@ -38,9 +41,9 @@ function CardCategory(props: CardCategoryProps) {
   return (
     <View style={[styles.container, { backgroundColor: color }, padding]}>
       <View style={[styles.content, { backgroundColor: colors.bgCard, height: height}]}>
-        <TextUi style={styles.title}>Tổng tờ trình</TextUi>
+        <TextUi style={styles.title}>{text}</TextUi>
         <SpaceUi height={4} />
-        <TextUi style={[styles.count, {color: color}]}>0</TextUi>
+        <TextUi style={[styles.count, {color: color}]}>{count ?? 0}</TextUi>
       </View>
     </View>
   );

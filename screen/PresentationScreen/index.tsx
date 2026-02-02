@@ -61,14 +61,14 @@ function PresentationScreen() {
                     ListHeaderComponent={<View style={{ gap: PADDING_PAGE, paddingBottom: PADDING_PAGE }}>
                         <Row>
                             <View style={styles.column}>
-                                <CardCategory color="#97B1CB" type="left" />
-                                <CardCategory color="#60C486" type="bottom" height={165} />
-                                <CardCategory color="#C4C460" type="left" />
+                                <CardCategory color="#97B1CB" type="left" text={"Tổng tờ trình"} count={0} />
+                                <CardCategory color="#60C486" type="bottom" height={165} text={"Tổng tờ trình"} count={0} />
+                                <CardCategory color="#C4C460" type="left" text={"Tổng tờ trình"} count={0} />
                             </View>
                             <View style={styles.column}>
-                                <CardCategory color="#F0A424" type="top" height={130} />
-                                <CardCategory color="#C58D8E" type="right" />
-                                <CardCategory color="#C5B0D4" type="bottom" height={135} />
+                                <CardCategory color="#F0A424" type="top" height={130} text={"Tổng tờ trình"} count={0} />
+                                <CardCategory color="#C58D8E" type="right" text={"Tổng tờ trình"} count={0} />
+                                <CardCategory color="#C5B0D4" type="bottom" height={135} text={"Tổng tờ trình"} count={0} />
                             </View>
                         </Row>
 

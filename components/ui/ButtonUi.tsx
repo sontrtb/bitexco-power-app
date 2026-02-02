@@ -6,7 +6,7 @@ import TextUi from "./TextUi";
 interface ButtonUiProps {
     children?: ReactElement;
     text?: string;
-    type?: "primary" | "outline";
+    type?: "primary" | "outline" | "success" | "error";
     style?: StyleProp<ViewStyle>;
     onPress?: () => void;
     isLoading?: boolean;
@@ -43,6 +43,16 @@ function ButtonUi(props: ButtonUiProps) {
                 bgColor = color.bgCard
                 textColor = color.primary
                 borderColor = color.primary
+                break
+            case "success":
+                bgColor = "#1CC88A"
+                textColor = "#fff"
+                borderColor = "#1CC88A"
+                break
+            case "error":
+                bgColor = "#E74A3B"
+                textColor = "#fff"
+                borderColor = "#E74A3B"
                 break
         }
 

@@ -1,12 +1,11 @@
+import RowValueLable from "@/components/commons/RowValueLable";
 import BottomSheet from "@/components/ui/BottomSheet";
 import ButtonUi from "@/components/ui/ButtonUi";
 import CardUi from "@/components/ui/CardUi";
-import Row from "@/components/ui/Row";
 import SpaceUi from "@/components/ui/SpaceUi";
 import TextUi from "@/components/ui/TextUi";
 import TitleUi from "@/components/ui/Title";
 import TouchableOpacityUi from "@/components/ui/TouchableOpacityUi";
-import useColor from "@/hooks/useColor";
 import { PADDING_PAGE } from "@/theme/layout";
 import { useState } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -45,8 +44,6 @@ const data = [
 ]
 
 function CardOfficialDispatch() {
-    const colors = useColor()
-
     const [isShowDes, setIsShowDes] = useState(false)
 
     const toogleShowDes = () => {
@@ -59,14 +56,11 @@ function CardOfficialDispatch() {
                 <CardUi style={styles.card}>
                     {
                         data.map((d, index) => (
-                            <Row key={index}>
-                                <TextUi style={[styles.text, { color: colors.textNeutral }]}>
-                                    {d.label}
-                                </TextUi>
-                                <TextUi style={styles.text} numberOfLines={3}>
-                                    {d.value}
-                                </TextUi>
-                            </Row>
+                            <RowValueLable
+                                key={index}
+                                value={d.value}
+                                label={d.label}
+                            />
                         ))
                     }
                 </CardUi>
